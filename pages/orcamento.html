@@ -281,6 +281,10 @@
         .service-item label {
             cursor: pointer;
             margin: 0;
+            word-wrap: break-word;
+            word-break: break-word;
+            hyphens: auto;
+            line-height: 1.3;
         }
 
         /* Submit Button */
@@ -427,6 +431,18 @@
             .section-title {
                 font-size: 1.5rem; /* Reduzido tamanho da fonte */
             }
+
+            .service-item {
+                padding: 0.75rem 0.5rem;
+                align-items: flex-start;
+            }
+
+            .service-item label {
+                font-size: 0.9rem;
+                line-height: 1.2;
+                word-break: break-word;
+                hyphens: auto;
+            }
         }
 
         @media (max-width: 480px) {
@@ -456,6 +472,21 @@
 
             .service-item {
                 padding: 0.75rem 0.5rem; /* Padding reduzido */
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+            }
+
+            .service-item input[type="checkbox"] {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+
+            .service-item label {
+                font-size: 0.85rem;
+                width: 100%;
+                word-break: break-word;
+                hyphens: auto;
             }
 
             .range-option {
@@ -797,5 +828,3 @@
     </script>
 </body>
 </html>
-
-
