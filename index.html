@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J.A Arquitetura - Projetos Arquitetônicos Exclusivos</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="#">
+                    <img src="img/logo.png">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#services">Serviços</a></li>
+                <li><a href="#portfolio">Portfólio</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>J.A Arquitetura</h1>
+            <p>Transformando sonhos em projetos arquitetônicos únicos e funcionais</p>
+            <a href="contato.html" class="cta-button">Solicite um Orçamento</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">Sobre Nós</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>A J.A Arquitetura é uma empresa especializada em projetos arquitetônicos residenciais e comerciais,
+                    com mais de 10 anos de experiência no mercado. Nossa missão é criar espaços únicos que combinam
+                    funcionalidade, estética e sustentabilidade.</p>
+                <p>Trabalhamos com uma equipe de profissionais qualificados, utilizando as mais modernas tecnologias de
+                    projeto e sempre priorizando as necessidades e desejos de nossos clientes.</p>
+                <p>Cada projeto é desenvolvido de forma personalizada, respeitando o orçamento e prazo estabelecidos,
+                    garantindo a satisfação total de nossos clientes.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://i.pinimg.com/736x/a2/79/b1/a279b1b7318a08f151c84878eaa75c52.jpg" alt="Equipe J.A Arquitetura">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2 class="section-title">Nossos Serviços</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-home"></i>
+                <h3>Projetos Residenciais</h3>
+                <p>Casas, apartamentos e reformas residenciais com design personalizado e funcional.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-building"></i>
+                <h3>Projetos Comerciais</h3>
+                <p>Escritórios, lojas e espaços comerciais que maximizam a produtividade e atratividade.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-drafting-compass"></i>
+                <h3>Consultoria Arquitetônica</h3>
+                <p>Orientação especializada para otimização de espaços e soluções arquitetônicas.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-leaf"></i>
+                <h3>Arquitetura Sustentável</h3>
+                <p>Projetos eco-friendly que respeitam o meio ambiente e reduzem custos operacionais.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-cube"></i>
+                <h3>Modelagem 3D</h3>
+                <p>Visualização realística dos projetos através de renderizações em alta qualidade.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-tools"></i>
+                <h3>Acompanhamento de Obra</h3>
+                <p>Supervisão técnica durante a execução para garantir a qualidade do projeto.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <h2 class="section-title">Nosso Portfólio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="https://i.pinimg.com/736x/03/14/ea/0314ea771447c2439acbdf0c7271cdb0.jpg" alt="Casa Residencial Moderna">
+                <div class="portfolio-overlay">
+                    <h3>Casa Residencial Moderna</h3>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://i.pinimg.com/736x/49/fc/d1/49fcd10d7d40a3a83ca184e7153d8b03.jpg" alt="Edifício Comercial">
+                <div class="portfolio-overlay">
+                    <h3>Edifício Comercial</h3>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://i.pinimg.com/1200x/21/59/5d/21595d186e9585a5611014563e26008c.jpg" alt="Apartamento de Luxo">
+                <div class="portfolio-overlay">
+                    <h3>Apartamento de Luxo</h3>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://i.pinimg.com/736x/69/29/8a/69298afdf15ce94ed74f617ec9d75aa8.jpg" alt="Restaurante Moderno">
+                <div class="portfolio-overlay">
+                    <h3>Restaurante Moderno</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Process Section -->
+    <section id="process" class="process-section">
+        <h2 class="section-title">Nosso Processo Arquitetônico</h2>
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="step-number">01</div>
+                <div class="step-content">
+                    <h3>Briefing e Análise</h3>
+                    <p>Entendemos suas necessidades, estilo de vida e orçamento através de reuniões detalhadas e visita
+                        técnica ao local.</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">02</div>
+                <div class="step-content">
+                    <h3>Estudo Preliminar</h3>
+                    <p>Desenvolvemos as primeiras ideias e conceitos, apresentando plantas baixas e perspectivas
+                        iniciais do projeto.</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">03</div>
+                <div class="step-content">
+                    <h3>Anteprojeto</h3>
+                    <p>Refinamos o projeto com plantas detalhadas, cortes, fachadas e renderizações 3D para visualização
+                        completa.</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">04</div>
+                <div class="step-content">
+                    <h3>Projeto Executivo</h3>
+                    <p>Elaboramos todos os detalhamentos técnicos necessários para a execução da obra com precisão e
+                        qualidade.</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">05</div>
+                <div class="step-content">
+                    <h3>Acompanhamento</h3>
+                    <p>Supervisionamos a execução da obra, garantindo que o projeto seja realizado conforme planejado.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section id="awards" class="awards-section">
+        <h2 class="section-title">Reconhecimentos e Prêmios</h2>
+        <div class="awards-grid">
+            <div class="award-item">
+                <i class="fas fa-trophy"></i>
+                <h3>Prêmio Arquitetura Sustentável 2024</h3>
+                <p>Reconhecimento pela excelência em projetos eco-friendly e inovação em sustentabilidade.</p>
+            </div>
+            <div class="award-item">
+                <i class="fas fa-medal"></i>
+                <h3>Melhor Projeto Residencial 2023</h3>
+                <p>Premiação pelo projeto da Villa Contemporânea, destacando-se pela funcionalidade e design.</p>
+            </div>
+            <div class="award-item">
+                <i class="fas fa-star"></i>
+                <h3>Certificação LEED Gold</h3>
+                <p>Certificação internacional em construção sustentável para múltiplos projetos desenvolvidos.</p>
+            </div>
+            <div class="award-item">
+                <i class="fas fa-certificate"></i>
+                <h3>CAU-SP Destaque 2022</h3>
+                <p>Reconhecimento do Conselho de Arquitetura e Urbanismo pela contribuição à arquitetura paulista.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 J.A Arquitetura. Todos os direitos reservados.</p>
+        <p>Desenvolvido por: <a href="https://www.instagram.com/lipeitx" target="_blank">Felipe</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
