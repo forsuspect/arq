@@ -1,199 +1,163 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato - J.A Arquitetura</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>Contato</title>
+    <style>
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            /* Melhorando responsividade mobile */
+            body {
+                overflow-x: hidden;
+            }
+            
+            nav {
+                padding: 0 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            main {
+                padding: 1rem;
+                margin-top: 80px;
+            }
+
+            .page-header {
+                padding: 2rem 1rem;
+                margin-top: 1rem;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .contact-section,
+            .faq-section {
+                padding: 2rem 1rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Ajustes para telas muito pequenas */
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .page-header p {
+                font-size: 1rem;
+            }
+            
+            .contact-section,
+            .faq-section {
+                padding: 1.5rem 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <a href="#">
-                    <img src="../img/logo.png">
-                </a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="../index.html">Início</a></li>
-                <li><a href="../index.html#about">Sobre</a></li>
-                <li><a href="../index.html#services">Serviços</a></li>
-                <li><a href="../index.html#portfolio">Portfólio</a></li>
-                <li><a href="contato.html" class="active">Contato</a></li>
-            </ul>
-            <div class="menu-toggle" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
-    </header>
+    <nav>
+        <ul class="nav-links">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="index.html#about">Sobre</a></li>
+            <li><a href="index.html#services">Serviços</a></li>
+            <li><a href="index.html#portfolio">Portfólio</a></li>
+            <li><a href="orcamento.html">Orçamento</a></li>
+            <li><a href="contato.html">Contato</a></li>
+        </ul>
+        <button class="menu-toggle">Menu</button>
+    </nav>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Entre em Contato</h1>
-            <p>Vamos transformar suas ideias em realidade arquitetônica</p>
-        </div>
-    </section>
+    <main>
+        <section class="page-header">
+            <h1>Entre em contato conosco</h1>
+            <p>Nosso time está à disposição para ajudar com qualquer dúvida ou solicitação.</p>
+        </section>
 
-    <section class="main-content">
-        <div class="contact-grid">
-            <div class="contact-info">
-                <h2>Informações de Contato</h2>
-
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>
-                        <h3>Endereço</h3>
-                        <p>Rua das Flores, 123 - Centro<br>São Paulo - SP, 01234-567</p>
-                    </div>
+        <section class="contact-section">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2 class="section-title">Informações de contato</h2>
+                    <p>Email: contato@exemplo.com</p>
+                    <p>Telefone: (11) 99999-9999</p>
+                    <p>Endereço: Rua Exemplo, 123 - São Paulo</p>
                 </div>
-
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <div>
-                        <h3>Telefone</h3>
-                        <p>(11) 9999-9999<br>(11) 3333-3333</p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <div>
-                        <h3>E-mail</h3>
-                        <p>contato@jaarquitetura.com.br<br>orcamento@jaarquitetura.com.br</p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <i class="fas fa-clock"></i>
-                    <div>
-                        <h3>Horário de Funcionamento</h3>
-                        <p>Segunda a Sexta: 8h às 18h<br>Sábado: 8h às 12h</p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <i class="fab fa-whatsapp"></i>
-                    <div>
-                        <h3>WhatsApp</h3>
-                        <p>(11) 99999-9999<br>Atendimento rápido</p>
-                    </div>
+                <div class="form-grid">
+                    <h2 class="section-title">Formulário de contato</h2>
+                    <form action="#" method="post">
+                        <label for="name">Nome:</label>
+                        <input type="text" id="name" name="name" required>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                        <label for="message">Mensagem:</label>
+                        <textarea id="message" name="message" required></textarea>
+                        <button type="submit">Enviar</button>
+                    </form>
                 </div>
             </div>
+        </section>
 
-            <form class="contact-form" onsubmit="submitForm(event)">
-                <h2>Solicite um Orçamento</h2>
-
-                <div class="form-group">
-                    <label for="name">Nome Completo *</label>
-                    <input type="text" id="name" name="name" required>
+        <section class="faq-section">
+            <div class="faq-grid">
+                <h2 class="section-title">Perguntas frequentes</h2>
+                <div class="faq-item">
+                    <h3>Quanto tempo leva para responder?</h3>
+                    <p>Nosso time responde em até 24 horas úteis.</p>
                 </div>
-
-                <div class="form-group">
-                    <label for="email">E-mail *</label>
-                    <input type="email" id="email" name="email" required>
+                <div class="faq-item">
+                    <h3>Qual é o nosso horário de atendimento?</h3>
+                    <p>De segunda a sexta-feira, das 9h às 18h.</p>
                 </div>
-
-                <div class="form-group">
-                    <label for="phone">Telefone *</label>
-                    <input type="tel" id="phone" name="phone" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="service">Tipo de Serviço</label>
-                    <select id="service" name="service">
-                        <option value="">Selecione um serviço</option>
-                        <option value="residencial">Projeto Residencial</option>
-                        <option value="comercial">Projeto Comercial</option>
-                        <option value="reforma">Reforma</option>
-                        <option value="consultoria">Consultoria</option>
-                        <option value="sustentavel">Arquitetura Sustentável</option>
-                        <option value="acompanhamento">Acompanhamento de Obra</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="budget">Orçamento Estimado</label>
-                    <select id="budget" name="budget">
-                        <option value="">Selecione uma faixa</option>
-                        <option value="ate-50k">Até R$ 50.000</option>
-                        <option value="50k-100k">R$ 50.000 - R$ 100.000</option>
-                        <option value="100k-200k">R$ 100.000 - R$ 200.000</option>
-                        <option value="200k-500k">R$ 200.000 - R$ 500.000</option>
-                        <option value="acima-500k">Acima de R$ 500.000</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="message">Descreva seu Projeto *</label>
-                    <textarea id="message" name="message"
-                        placeholder="Conte-nos sobre suas ideias, necessidades e expectativas para o projeto..."
-                        required></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn">Enviar Solicitação</button>
-            </form>
-        </div>
-    </section>
-
-    <section class="faq-section">
-        <h2>Perguntas Frequentes</h2>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFAQ(this)">
-                <h3>Quanto tempo leva para desenvolver um projeto?</h3>
-                <i class="fas fa-chevron-down"></i>
             </div>
-            <div class="faq-answer">
-                <p>O tempo varia conforme a complexidade do projeto. Projetos residenciais simples levam de 15 a 30
-                    dias, enquanto projetos comerciais complexos podem levar de 45 a 90 dias.</p>
-            </div>
-        </div>
+        </section>
+    </main>
 
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFAQ(this)">
-                <h3>Vocês fazem acompanhamento da obra?</h3>
-                <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="faq-answer">
-                <p>Sim, oferecemos serviço de acompanhamento técnico durante toda a execução da obra para garantir que o
-                    projeto seja executado conforme planejado.</p>
-            </div>
-        </div>
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
 
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFAQ(this)">
-                <h3>Como funciona o processo de orçamento?</h3>
-                <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="faq-answer">
-                <p>Após o primeiro contato, agendamos uma visita técnica gratuita. Com base nas suas necessidades,
-                    elaboramos uma proposta detalhada em até 7 dias úteis.</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFAQ(this)">
-                <h3>Trabalham com projetos sustentáveis?</h3>
-                <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="faq-answer">
-                <p>Sim, somos especializados em arquitetura sustentável, utilizando materiais eco-friendly e técnicas
-                    que reduzem o impacto ambiental e os custos operacionais.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 J.A Arquitetura. Todos os direitos reservados.</p>
-        <p>Desenvolvido por: <a href="https://www.instagram.com/lipeitx" target="_blank">Felipe</a></p>
-    </footer>
-
-    <script src="script.js"></script>
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
 </body>
-
 </html>
