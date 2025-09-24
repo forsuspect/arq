@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamento - J.A Arquitetura</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 100px;
+            padding: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Budget Form Section */
+        .budget-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Project Type Cards */
+        .project-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .project-type-card {
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .project-type-card:hover {
+            border-color: #3498db;
+            background: #e3f2fd;
+        }
+
+        .project-type-card.selected {
+            border-color: #3498db;
+            background: #e3f2fd;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+        }
+
+        .project-type-card i {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+
+        .project-type-card h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-type-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Budget Range */
+        .budget-range {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .range-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .range-option {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .range-option:hover {
+            border-color: #3498db;
+        }
+
+        .range-option.selected {
+            border-color: #3498db;
+            background: #e3f2fd;
+        }
+
+        .range-option input[type="radio"] {
+            display: none;
+        }
+
+        /* Services Checklist */
+        .services-checklist {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .service-item:hover {
+            border-color: #3498db;
+        }
+
+        .service-item input[type="checkbox"] {
+            margin-right: 1rem;
+            transform: scale(1.2);
+        }
+
+        .service-item label {
+            cursor: pointer;
+            margin: 0;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 2rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+        }
+
+        /* Pricing Info */
+        .pricing-info {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .pricing-item i {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-item h3 {
+            margin-bottom: 1rem;
+        }
+
+        .pricing-item p {
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a252f;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-types {
+                grid-template-columns: 1fr;
+            }
+
+            .range-options {
+                grid-template-columns: 1fr;
+            }
+
+            .services-checklist {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">J.A Arquitetura</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html#about">Sobre</a></li>
+                <li><a href="index.html#services">Serviços</a></li>
+                <li><a href="index.html#portfolio">Portfólio</a></li>
+                <li><a href="orcamento.html">Orçamento</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Solicite seu Orçamento</h1>
+            <p>Conte-nos sobre seu projeto e receba uma proposta personalizada</p>
+        </div>
+
+        <!-- Pricing Information -->
+        <section class="pricing-info">
+            <h2 class="section-title">Como Funciona Nosso Orçamento</h2>
+            <div class="pricing-grid">
+                <div class="pricing-item">
+                    <i class="fas fa-calculator"></i>
+                    <h3>Orçamento Gratuito</h3>
+                    <p>Análise inicial e orçamento sem compromisso para seu projeto arquitetônico</p>
+                </div>
+                <div class="pricing-item">
+                    <i class="fas fa-clock"></i>
+                    <h3>Resposta em 24h</h3>
+                    <p>Retornamos com uma proposta detalhada em até 24 horas úteis</p>
+                </div>
+                <div class="pricing-item">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Consultoria Incluída</h3>
+                    <p>Primeira reunião de consultoria incluída no orçamento</p>
+                </div>
+                <div class="pricing-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Garantia de Qualidade</h3>
+                    <p>Todos os projetos com garantia e acompanhamento técnico</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Budget Form -->
+        <section class="budget-section">
+            <h2 class="section-title">Formulário de Orçamento</h2>
+            
+            <form id="budgetForm">
+                <!-- Personal Information -->
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name">Nome Completo *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefone *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="city">Cidade *</label>
+                        <input type="text" id="city" name="city" required>
+                    </div>
+                </div>
+
+                <!-- Project Type -->
+                <div class="form-group">
+                    <label>Tipo de Projeto *</label>
+                    <div class="project-types">
+                        <div class="project-type-card" onclick="selectProjectType(this, 'residencial')">
+                            <i class="fas fa-home"></i>
+                            <h3>Residencial</h3>
+                            <p>Casas, apartamentos, reformas</p>
+                        </div>
+                        <div class="project-type-card" onclick="selectProjectType(this, 'comercial')">
+                            <i class="fas fa-building"></i>
+                            <h3>Comercial</h3>
+                            <p>Escritórios, lojas, restaurantes</p>
+                        </div>
+                        <div class="project-type-card" onclick="selectProjectType(this, 'industrial')">
+                            <i class="fas fa-industry"></i>
+                            <h3>Industrial</h3>
+                            <p>Galpões, fábricas, armazéns</p>
+                        </div>
+                        <div class="project-type-card" onclick="selectProjectType(this, 'reforma')">
+                            <i class="fas fa-tools"></i>
+                            <h3>Reforma</h3>
+                            <p>Renovações e ampliações</p>
+                        </div>
+                    </div>
+                    <input type="hidden" id="projectType" name="projectType" required>
+                </div>
+
+                <!-- Project Details -->
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="area">Área do Projeto (m²) *</label>
+                        <input type="number" id="area" name="area" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rooms">Número de Cômodos</label>
+                        <select id="rooms" name="rooms">
+                            <option value="">Selecione</option>
+                            <option value="1-2">1-2 cômodos</option>
+                            <option value="3-4">3-4 cômodos</option>
+                            <option value="5-6">5-6 cômodos</option>
+                            <option value="7+">7+ cômodos</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="floors">Número de Pavimentos</label>
+                        <select id="floors" name="floors">
+                            <option value="">Selecione</option>
+                            <option value="1">1 pavimento</option>
+                            <option value="2">2 pavimentos</option>
+                            <option value="3">3 pavimentos</option>
+                            <option value="4+">4+ pavimentos</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="deadline">Prazo Desejado</label>
+                        <select id="deadline" name="deadline">
+                            <option value="">Selecione</option>
+                            <option value="urgente">Urgente (até 30 dias)</option>
+                            <option value="normal">Normal (30-60 dias)</option>
+                            <option value="flexivel">Flexível (60+ dias)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Budget Range -->
+                <div class="form-group">
+                    <label>Faixa de Orçamento *</label>
+                    <div class="budget-range">
+                        <div class="range-options">
+                            <div class="range-option" onclick="selectBudgetRange(this, 'ate-50k')">
+                                <input type="radio" name="budgetRange" value="ate-50k" required>
+                                <strong>Até R$ 50.000</strong>
+                                <p>Projetos básicos</p>
+                            </div>
+                            <div class="range-option" onclick="selectBudgetRange(this, '50k-100k')">
+                                <input type="radio" name="budgetRange" value="50k-100k" required>
+                                <strong>R$ 50.000 - R$ 100.000</strong>
+                                <p>Projetos intermediários</p>
+                            </div>
+                            <div class="range-option" onclick="selectBudgetRange(this, '100k-200k')">
+                                <input type="radio" name="budgetRange" value="100k-200k" required>
+                                <strong>R$ 100.000 - R$ 200.000</strong>
+                                <p>Projetos avançados</p>
+                            </div>
+                            <div class="range-option" onclick="selectBudgetRange(this, 'acima-200k')">
+                                <input type="radio" name="budgetRange" value="acima-200k" required>
+                                <strong>Acima de R$ 200.000</strong>
+                                <p>Projetos premium</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Services -->
+                <div class="form-group">
+                    <label>Serviços Desejados</label>
+                    <div class="services-checklist">
+                        <div class="service-item">
+                            <input type="checkbox" id="projeto-arquitetonico" name="services[]" value="projeto-arquitetonico">
+                            <label for="projeto-arquitetonico">Projeto Arquitetônico</label>
+                        </div>
+                        <div class="service-item">
+                            <input type="checkbox" id="projeto-estrutural" name="services[]" value="projeto-estrutural">
+                            <label for="projeto-estrutural">Projeto Estrutural</label>
+                        </div>
+                        <div class="service-item">
+                            <input type="checkbox" id="projeto-eletrico" name="services[]" value="projeto-eletrico">
+                            <label for="projeto-eletrico">Projeto Elétrico</label>
+                        </div>
+                        <div class="service-item">
+                            <input type="checkbox" id="projeto-hidraulico" name="services[]" value="projeto-hidraulico">
+                            <label for="projeto-hidraulico">Projeto Hidráulico</label>
+                        </div>
+                        <div class="service-item">
+                            <input type="checkbox" id="modelagem-3d" name="services[]" value="modelagem-3d">
+                            <label for="modelagem-3d">Modelagem 3D</label>
+                        </div>
+                        <div class="service-item">
+                            <input type="checkbox" id="acompanhamento-obra" name="services[]" value="acompanhamento-obra">
+                            <label for="acompanhamento-obra">Acompanhamento de Obra</label>
+                        </div>
+                        <div class="service-item">
+                            <input type="checkbox" id="consultoria" name="services[]" value="consultoria">
+                            <label for="consultoria">Consultoria Técnica</label>
+                        </div>
+                        <div class="service-item">
+                            <input type="checkbox" id="aprovacao-prefeitura" name="services[]" value="aprovacao-prefeitura">
+                            <label for="aprovacao-prefeitura">Aprovação na Prefeitura</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Description -->
+                <div class="form-group">
+                    <label for="description">Descrição do Projeto *</label>
+                    <textarea id="description" name="description" placeholder="Descreva seu projeto, suas necessidades, estilo desejado e qualquer informação adicional que considere importante..." required></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i>
+                    Solicitar Orçamento
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 J.A Arquitetura. Todos os direitos reservados.</p>
+        <p>Desenvolvido com paixão pela arquitetura</p>
+    </footer>
+
+    <script>
+        // Menu Toggle
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // Project Type Selection
+        function selectProjectType(element, type) {
+            // Remove selection from all cards
+            document.querySelectorAll('.project-type-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Add selection to clicked card
+            element.classList.add('selected');
+            
+            // Set hidden input value
+            document.getElementById('projectType').value = type;
+        }
+
+        // Budget Range Selection
+        function selectBudgetRange(element, range) {
+            // Remove selection from all options
+            document.querySelectorAll('.range-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Add selection to clicked option
+            element.classList.add('selected');
+            
+            // Check the radio button
+            element.querySelector('input[type="radio"]').checked = true;
+        }
+
+        // Form Submission
+        document.getElementById('budgetForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = {};
+            
+            // Convert FormData to object
+            for (let [key, value] of formData.entries()) {
+                if (data[key]) {
+                    if (Array.isArray(data[key])) {
+                        data[key].push(value);
+                    } else {
+                        data[key] = [data[key], value];
+                    }
+                } else {
+                    data[key] = value;
+                }
+            }
+            
+            // Simulate form submission
+            alert('Orçamento solicitado com sucesso! Entraremos em contato em até 24 horas.');
+            
+            // In a real application, you would send this data to your server
+            console.log('Budget request data:', data);
+            
+            // Reset form
+            this.reset();
+            document.querySelectorAll('.project-type-card, .range-option').forEach(el => {
+                el.classList.remove('selected');
+            });
+        });
+
+        // Form validation
+        function validateForm() {
+            const requiredFields = document.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.style.borderColor = '#e74c3c';
+                    isValid = false;
+                } else {
+                    field.style.borderColor = '#e0e0e0';
+                }
+            });
+            
+            return isValid;
+        }
+
+        // Real-time validation
+        document.querySelectorAll('input, select, textarea').forEach(field => {
+            field.addEventListener('blur', function() {
+                if (this.hasAttribute('required') && !this.value.trim()) {
+                    this.style.borderColor = '#e74c3c';
+                } else {
+                    this.style.borderColor = '#e0e0e0';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
