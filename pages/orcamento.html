@@ -345,6 +345,15 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            /* Melhorando responsividade mobile */
+            body {
+                overflow-x: hidden;
+            }
+            
+            nav {
+                padding: 0 1rem;
+            }
+            
             .nav-links {
                 display: none;
                 position: absolute;
@@ -365,8 +374,23 @@
                 display: flex;
             }
 
+            main {
+                padding: 1rem;
+                margin-top: 80px;
+            }
+
+            .page-header {
+                padding: 2rem 1rem;
+                margin-top: 1rem;
+            }
+
             .page-header h1 {
                 font-size: 2rem;
+            }
+
+            .budget-section,
+            .pricing-info {
+                padding: 2rem 1rem;
             }
 
             .form-grid {
@@ -387,6 +411,30 @@
 
             .pricing-grid {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Ajustes para telas muito pequenas */
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .page-header p {
+                font-size: 1rem;
+            }
+            
+            .budget-section,
+            .pricing-info {
+                padding: 1.5rem 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .pricing-item {
+                padding: 1.5rem;
             }
         }
     </style>
