@@ -3,15 +3,281 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato</title>
+    <title>Contato - J.A Arquitetura</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+            overflow-x: hidden; /* <CHANGE> Previne scroll horizontal */
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 100px;
+            padding: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .contact-info h3 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: #3498db;
+            margin-right: 1rem;
+            width: 30px;
+        }
+
+        .contact-item div h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item div p {
+            color: #666;
+            margin: 0;
+        }
+
+        /* Form */
+        .contact-form {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .contact-form h3 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .faq-item {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+        }
+
+        .faq-item h4 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .faq-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a252f;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
-            /* Melhorando responsividade mobile */
-            body {
-                overflow-x: hidden;
-            }
-            
             nav {
                 padding: 0 1rem;
             }
@@ -26,6 +292,7 @@
                 flex-direction: column;
                 padding: 1rem;
                 box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                gap: 1rem;
             }
 
             .nav-links.active {
@@ -37,126 +304,247 @@
             }
 
             main {
-                padding: 1rem;
+                padding: 1rem; /* <CHANGE> Reduzido padding para mobile */
                 margin-top: 80px;
             }
 
             .page-header {
-                padding: 2rem 1rem;
+                padding: 2rem 1rem; /* <CHANGE> Reduzido padding para mobile */
                 margin-top: 1rem;
             }
 
             .page-header h1 {
-                font-size: 2rem;
+                font-size: 2rem; /* <CHANGE> Reduzido tamanho da fonte */
             }
 
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
+            .page-header p {
+                font-size: 1rem;
             }
 
             .contact-section,
             .faq-section {
-                padding: 2rem 1rem;
+                padding: 2rem 1rem; /* <CHANGE> Reduzido padding para mobile */
             }
 
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-info {
-                grid-template-columns: 1fr;
+            .contact-grid {
+                grid-template-columns: 1fr; /* <CHANGE> Uma coluna em mobile */
+                gap: 2rem;
             }
 
             .faq-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* <CHANGE> Uma coluna em mobile */
+            }
+
+            .section-title {
+                font-size: 1.5rem; /* <CHANGE> Reduzido tamanho da fonte */
             }
         }
 
         @media (max-width: 480px) {
-            /* Ajustes para telas muito pequenas */
             .page-header h1 {
-                font-size: 1.8rem;
-            }
-            
-            .page-header p {
-                font-size: 1rem;
+                font-size: 1.8rem; /* <CHANGE> Ainda menor para telas muito pequenas */
             }
             
             .contact-section,
             .faq-section {
-                padding: 1.5rem 1rem;
+                padding: 1.5rem 1rem; /* <CHANGE> Padding ainda menor */
             }
             
-            .section-title {
-                font-size: 1.5rem;
+            .contact-info,
+            .contact-form {
+                padding: 1.5rem; /* <CHANGE> Padding reduzido */
             }
         }
     </style>
 </head>
 <body>
-    <nav>
-        <ul class="nav-links">
-            <li><a href="index.html">Início</a></li>
-            <li><a href="index.html#about">Sobre</a></li>
-            <li><a href="index.html#services">Serviços</a></li>
-            <li><a href="index.html#portfolio">Portfólio</a></li>
-            <li><a href="orcamento.html">Orçamento</a></li>
-            <li><a href="contato.html">Contato</a></li>
-        </ul>
-        <button class="menu-toggle">Menu</button>
-    </nav>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">J.A Arquitetura</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html#about">Sobre</a></li>
+                <li><a href="index.html#services">Serviços</a></li>
+                <li><a href="index.html#portfolio">Portfólio</a></li>
+                <li><a href="orcamento.html">Orçamento</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
 
     <main>
-        <section class="page-header">
-            <h1>Entre em contato conosco</h1>
-            <p>Nosso time está à disposição para ajudar com qualquer dúvida ou solicitação.</p>
-        </section>
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Entre em Contato</h1>
+            <p>Estamos prontos para transformar suas ideias em realidade arquitetônica</p>
+        </div>
 
+        <!-- Contact Section -->
         <section class="contact-section">
+            <h2 class="section-title">Fale Conosco</h2>
             <div class="contact-grid">
+                <!-- Contact Information -->
                 <div class="contact-info">
-                    <h2 class="section-title">Informações de contato</h2>
-                    <p>Email: contato@exemplo.com</p>
-                    <p>Telefone: (11) 99999-9999</p>
-                    <p>Endereço: Rua Exemplo, 123 - São Paulo</p>
+                    <h3>Informações de Contato</h3>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Endereço</h4>
+                            <p>Rua da Arquitetura, 123<br>Centro - São Paulo, SP<br>CEP: 01234-567</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Telefone</h4>
+                            <p>(11) 99999-9999<br>(11) 3333-4444</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>E-mail</h4>
+                            <p>contato@jaarquitetura.com.br<br>projetos@jaarquitetura.com.br</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Horário de Atendimento</h4>
+                            <p>Segunda a Sexta: 8h às 18h<br>Sábado: 8h às 12h</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-grid">
-                    <h2 class="section-title">Formulário de contato</h2>
-                    <form action="#" method="post">
-                        <label for="name">Nome:</label>
-                        <input type="text" id="name" name="name" required>
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
-                        <label for="message">Mensagem:</label>
-                        <textarea id="message" name="message" required></textarea>
-                        <button type="submit">Enviar</button>
+
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <h3>Envie sua Mensagem</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nome Completo *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-mail *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Assunto *</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Mensagem *</label>
+                            <textarea id="message" name="message" placeholder="Conte-nos sobre seu projeto ou dúvida..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Enviar Mensagem
+                        </button>
                     </form>
                 </div>
             </div>
         </section>
 
+        <!-- FAQ Section -->
         <section class="faq-section">
+            <h2 class="section-title">Perguntas Frequentes</h2>
             <div class="faq-grid">
-                <h2 class="section-title">Perguntas frequentes</h2>
                 <div class="faq-item">
-                    <h3>Quanto tempo leva para responder?</h3>
-                    <p>Nosso time responde em até 24 horas úteis.</p>
+                    <h4>Quanto tempo leva para responder?</h4>
+                    <p>Respondemos todas as mensagens em até 24 horas úteis. Para orçamentos, o prazo pode ser de até 48 horas para uma análise mais detalhada.</p>
                 </div>
+
                 <div class="faq-item">
-                    <h3>Qual é o nosso horário de atendimento?</h3>
-                    <p>De segunda a sexta-feira, das 9h às 18h.</p>
+                    <h4>Fazem atendimento presencial?</h4>
+                    <p>Sim! Agendamos visitas técnicas e reuniões presenciais conforme a necessidade do projeto. Entre em contato para agendar.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Atendem em outras cidades?</h4>
+                    <p>Atendemos em toda a região metropolitana de São Paulo. Para outras localidades, consulte disponibilidade e condições especiais.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Qual o prazo médio dos projetos?</h4>
+                    <p>O prazo varia conforme a complexidade. Projetos residenciais simples: 15-30 dias. Projetos comerciais: 30-60 dias. Projetos complexos: 60+ dias.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Oferecem consultoria online?</h4>
+                    <p>Sim! Realizamos consultorias e reuniões online via videoconferência para maior comodidade dos nossos clientes.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Como funciona o processo de aprovação?</h4>
+                    <p>Cuidamos de todo o processo de aprovação na prefeitura, incluindo documentação, protocolos e acompanhamento até a liberação final.</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <script>
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 J.A Arquitetura. Todos os direitos reservados.</p>
+        <p>Desenvolvido com paixão pela arquitetura</p>
+    </footer>
 
-        menuToggle.addEventListener('click', () => {
+    <script>
+        // Menu Toggle
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
             navLinks.classList.toggle('active');
+        }
+
+        // Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = {};
+            
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+            
+            // Simulate form submission
+            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+            
+            // In a real application, you would send this data to your server
+            console.log('Contact form data:', data);
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Form validation
+        document.querySelectorAll('input, textarea').forEach(field => {
+            field.addEventListener('blur', function() {
+                if (this.hasAttribute('required') && !this.value.trim()) {
+                    this.style.borderColor = '#e74c3c';
+                } else {
+                    this.style.borderColor = '#e0e0e0';
+                }
+            });
         });
     </script>
 </body>
